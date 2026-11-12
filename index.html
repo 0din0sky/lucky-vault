@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101020">
+<title>Lucky Vault</title>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #101020;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  padding: 25px 20px;
+  text-align: center;
+}
+
+header h1 {
+  color: #f6c85f;
+  font-size: 28px;
+  margin: 0;
+}
+
+header p {
+  color: #9999b5;
+}
+
+.balance {
+  margin: 15px;
+  padding: 25px;
+  border-radius: 20px;
+  background: linear-gradient(135deg,#493078,#191936);
+  text-align: center;
+}
+
+.balance small {
+  color: #c9b9ed;
+}
+
+.balance h2 {
+  font-size: 36px;
+  color: #ffd66b;
+  margin: 12px;
+}
+
+.content {
+  padding: 15px;
+  padding-bottom: 100px;
+}
+
+.section-title {
+  color: #f6c85f;
+  margin: 20px 5px;
+}
+
+.games {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.game {
+  background: #202039;
+  border: 1px solid #373451;
+  border-radius: 17px;
+  padding: 22px 10px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.game span {
+  display: block;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #19192b;
+  display: flex;
+  justify-content: space-around;
+  padding: 13px 3px;
+  border-top: 1px solid #373451;
+}
+
+.nav button {
+  border: none;
+  background: none;
+  color: #9999b5;
+  font-size: 11px;
+}
+
+.nav button.active {
+  color: #ffd66b;
+}
+
+button {
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>👑 LUCKY VAULT</h1>
+  <p>Твоя коллекция удачи</p>
+</header>
+
+<div class="balance">
+  <small>ТВОЙ БАЛАНС</small>
+  <h2>🪙 1 000</h2>
+  <small>Виртуальные монеты</small>
+</div>
+
+<div class="content">
+  <h3 class="section-title">🎮 Игры</h3>
+
+  <div class="games">
+    <div class="game" onclick="openGame('Ракета')">
+      <span>🚀</span>Ракета
+    </div>
+
+    <div class="game" onclick="openGame('Мины')">
+      <span>💣</span>Мины
+    </div>
+
+    <div class="game" onclick="openGame('Кейсы')">
+      <span>🎁</span>Кейсы
+    </div>
+
+    <div class="game" onclick="openGame('Колесо')">
+      <span>🎡</span>Колесо
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <button class="active" onclick="navigate('Игры',this)">🎮<br>Игры</button>
+  <button onclick="navigate('Кейсы',this)">🎁<br>Кейсы</button>
+  <button onclick="navigate('Колесо',this)">🎡<br>Колесо</button>
+  <button onclick="navigate('Профиль',this)">👤<br>Профиль</button>
+  <button onclick="navigate('Рейтинг',this)">🏆<br>Рейтинг</button>
+</nav>
+
+<script>
+const tg = window.Telegram?.WebApp;
+
+if (tg) {
+  tg.ready();
+  tg.expand();
+}
+
+function openGame(name) {
+  alert(name + ' скоро появится!');
+}
+
+function navigate(name, button) {
+  document.querySelectorAll('.nav button')
+    .forEach(b => b.classList.remove('active'));
+
+  button.classList.add('active');
+
+  if (name !== 'Игры') {
+    alert(name + ' скоро появится!');
+  }
+}
+</script>
+
+</body>
+</html>
